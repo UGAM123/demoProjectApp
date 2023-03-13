@@ -1,0 +1,38 @@
+.login_form-container{
+    width: 35%;
+    margin: 25px auto;
+}
+.login_form-container div{
+    width: 80%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.login_form-container .div-1{
+    padding-top: 20px ;
+}
+
+.login_form-container .div-1 input,
+.login_form-container .div-2 input{
+    width:80%;
+    height: 3rem;
+    border-radius: 5px;
+    margin: 10px auto;
+}
+
+.login_form-container .div-3 button{
+    width: 30%;
+    height: 3rem;
+    border-radius: 5px;
+    margin: 10px auto;
+}
+
+.login_form-container .div-4{
+    margin: 10px auto;
+    padding-bottom: 20px;
+}
+.login_form-container .div-4 a{
+    margin: auto 10px;
+    font-style: italic;
+}

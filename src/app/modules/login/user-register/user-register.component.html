@@ -1,0 +1,36 @@
+<div class="register-container">
+    <form class="mat-elevation-z8" [formGroup]="registerForm">
+        <h4>Registration Form</h4>
+        <div class="div-1">
+            <input type="text" placeholder="First Name" formControlName="firstName">
+            <input type="text" placeholder="Middle Name" formControlName="maidenName">
+            <input type="text" placeholder="Last Name" formControlName="lastName">
+        </div>
+        <div class="div-2">
+            <input type="number" placeholder="Phone Number" formControlName="phone">
+            <span class="example-spacer"></span>
+            <div>
+                <label>DOB :</label>
+                <input type="date" placeholder="Birth Date" formControlName="birthDate">
+            </div>
+        </div>
+        <div class="div-3">
+            <label>Gender :</label>
+            <input type="radio" value="male" ngModel formControlName="gender">Male
+            <input type="radio" value="female" formControlName="gender">Female
+            <input type="radio" value="others" formControlName="gender">Others
+        </div>
+        <div class="div-4">
+            <input type="text" placeholder="User Name" formControlName="username">
+            <input type="email" placeholder="Email Id" formControlName="email">
+        </div>
+        <div class="div-5">
+            <input type="password" placeholder="Password">
+            <input type="password" placeholder="Confirm Password" formControlName="password">
+        </div>
+        <div class="div-6"> 
+            <button class="btn btn-primary">Submit</button>
+        </div>
+        <p>Already Registered? <a routerLink="/login">Login</a></p>
+    </form>
+</div>

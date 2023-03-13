@@ -1,0 +1,42 @@
+.example-container {
+  height: 61vh;
+}
+
+.example-sidenav-content {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.example-sidenav {
+  padding: 20px;
+}
+
+.products_list-container{
+  width: 70vw;
+  height: 70vh;
+  margin: 3rem auto;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.products_list-navbar{
+  display: flex;
+  margin: 0;
+  justify-content: space-between;
+  align-items: center;
+}
+.products_list-navbar ul{
+  display: flex;
+  align-items: center;
+  margin: 0;
+}
+.products_list-navbar button{
+  background: none;
+  align-items: center;
+  justify-content: center;
+}
+.product_name{
+  background:none;
+  border: none;
+}

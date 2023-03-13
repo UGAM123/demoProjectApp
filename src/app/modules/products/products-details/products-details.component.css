@@ -1,0 +1,17 @@
+.product_details-title{
+    text-align:center
+}
+.product_details-container div{
+    display:flex;
+    width: 80%;
+    margin: 15px auto;
+}
+.short_details{
+    padding: 25px;
+    flex-direction: column;
+}
+.product_details-container div img{
+    max-width: 20vw;
+    max-height: 20vw;
+    margin: auto;
+}

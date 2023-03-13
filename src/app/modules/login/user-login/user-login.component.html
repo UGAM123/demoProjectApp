@@ -1,0 +1,16 @@
+<div class="login_form-container">
+    <form class="mat-elevation-z8" [formGroup]="loginForm">
+        <div class="div-1">
+            <input type="text" name="username" placeholder="User Name" formControlName="username">
+        </div>
+        <div class="div-2">
+            <input type="password" name="password" placeholder="Password" formControlName="password">
+        </div>
+        <div class="div-3">
+            <button class="btn btn-primary" routerLink="/products" (click)="login()">Login</button>
+        </div>
+        <div class="div-4">
+            Not Registered? <a routerLink="/register">Register</a>
+        </div>
+    </form>
+</div>

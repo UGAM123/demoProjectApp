@@ -1,0 +1,15 @@
+<div class="product_details-container">
+    <h4 class="product_details-title">{{product.title}}</h4>
+    <div class="product_details-content">
+        <img [src]="product.thumbnail">
+        <div class="short_details">
+            <p>{{product.description}}</p>
+            <p>Price : {{product.price | currency}}</p>
+        </div>
+    </div>
+    <div>
+        <button class="btn btn-white">Add to Cart</button>
+        <button class="btn btn-primary">Edit</button>
+        <button class="btn btn-danger" (click)="callParentDeleteItem()">Delete</button>
+    </div>
+</div>

@@ -1,0 +1,77 @@
+.register-container {
+    width: 50%;
+    margin: 25px auto;
+}
+.register-container h4{
+    width: 80%;
+    margin: auto;
+    padding: 20px 0;
+    align-items: center;
+    text-align: center;
+}
+.register-container div, .register-container p{
+    width: 80%;
+    margin: auto;
+    padding: 10px 0px;
+}
+
+.register-container .div-1,
+.register-container .div-4,
+.register-container .div-5 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.register-container .div-1 input {
+    width: 32%;
+    height: 3rem;
+    border-radius: 5px;
+}
+
+.register-container .div-6 {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    padding-bottom: 20px;
+}
+
+.register-container .div-6 button{
+    width: 50%;
+    height: 3rem;
+    border-radius: 5px;
+}
+
+.register-container .div-2 {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.register-container .div-2 input,
+.register-container .div-4 input,
+.register-container .div-5 input {
+    width: 48%;
+    height: 3rem;
+    border-radius: 5px;
+}
+
+.register-container .div-3 input {
+    margin: 0px 20px;
+}
+
+.register-container p{
+    display: flex;
+    justify-content: center;
+    align-items: center;  
+    padding-bottom: 20px;  
+}
+.register-container p a{
+    margin-left: 10px;
+    font-style: italic;
+}
+
+.example-spacer {
+    flex: 1 1 auto;
+}
