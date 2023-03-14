@@ -7,6 +7,8 @@ import { ProductsListComponent } from './products-list/products-list.component';
 import { ProductsDetailsComponent } from './products-details/products-details.component';
 import { ProductsAddComponent } from './products-add/products-add.component';
 import { ProductsEditComponent } from './products-edit/products-edit.component';
+import { ProductsGridComponent } from './products-grid/products-grid.component';
+import { ProductsComponent } from './products.component';
 
 
 @NgModule({
@@ -14,7 +16,9 @@ import { ProductsEditComponent } from './products-edit/products-edit.component';
     ProductsListComponent,
     ProductsDetailsComponent,
     ProductsAddComponent,
-    ProductsEditComponent
+    ProductsEditComponent,
+    ProductsComponent,
+    ProductsGridComponent
   ],
   imports: [
     CommonModule,

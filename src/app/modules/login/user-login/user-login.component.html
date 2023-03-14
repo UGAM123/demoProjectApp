@@ -1,13 +1,23 @@
 <div class="login_form-container">
     <form class="mat-elevation-z8" [formGroup]="loginForm">
+        <div>
+            <span *ngIf="invalidDetails" class="invalid_details">Invalid username or password!
+            </span>
+        </div>
         <div class="div-1">
             <input type="text" name="username" placeholder="User Name" formControlName="username">
+            <span *ngIf="!loginForm.controls['username'].valid && loginForm.controls['username'].touched">
+                Please enter valid username!
+            </span>
         </div>
         <div class="div-2">
             <input type="password" name="password" placeholder="Password" formControlName="password">
+            <span *ngIf="!loginForm.controls['password'].valid && loginForm.controls['password'].touched">
+                Please enter valid password!
+            </span>
         </div>
         <div class="div-3">
-            <button class="btn btn-primary" routerLink="/products" (click)="login()">Login</button>
+            <button id="login-button" class="btn btn-primary" [disabled]="loginForm.invalid" (click)="detailsValidation()">Login</button>
         </div>
         <div class="div-4">
             Not Registered? <a routerLink="/register">Register</a>

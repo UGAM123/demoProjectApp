@@ -1,6 +1,4 @@
 .products_grid-container{
-    width: 80%;
-    margin: auto;
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
