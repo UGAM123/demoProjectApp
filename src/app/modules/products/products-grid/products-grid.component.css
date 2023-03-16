@@ -5,6 +5,7 @@
 }
 .product_details{
     width: 24%;
+    min-height: 450px;
     margin: 10px .5%;
     display: flex;
     flex-direction: column;
@@ -20,9 +21,17 @@
     display: flex;
     margin:10px auto;
 }
+
+.product_grid-content{
+    height: 400px;
+}
 .product_details .button-container{
     width: 80%;
-    margin: auto;
+    margin: auto auto 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
 }
 .product_details .img-container img{
     max-width: 80%;
@@ -36,4 +45,19 @@
 }
 .products_grid-container .product_details:hover{
     transform: scale(1.05);
+}
+
+.quantity_control{
+    width: 50%;
+    margin: 10px auto 0 auto;
+    display:flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.quantity_control button{
+    width: 30px;
+    outline: none;
+    background: none;
+    border-radius: 50%;
 }

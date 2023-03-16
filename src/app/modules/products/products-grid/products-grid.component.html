@@ -1,21 +1,27 @@
 <div class="products_grid-container">
     <ng-container *ngIf="noProducts">
-       <h4>No Porducts Found</h4>
+        <h4>No Porducts Found</h4>
     </ng-container>
-    <ng-container *ngFor="let product of filteredList,let i=index">
+    <ng-container *ngFor="let product of listSlice">
         <div class="mat-elevation-z8 product_details">
-            <h5>{{product.title}}</h5>
-            <div class="img-container">
-                <img [src]="product.thumbnail">
+            <div class="products_grid-content" [routerLink]="['details/'+product.id]">
+                <h5>{{product.title}}</h5>
+                <div class="img-container">
+                    <img [src]="product.thumbnail">
+                </div>
+                <p>{{product.description}}</p>
+                <p>Price : {{product.price | currency}}</p>
             </div>
-            <p>{{product.description}}</p>
-            <p>Price : {{product.price | currency}}</p>
-            <!--
             <div class="button-container">
-                <button class="btn btn-outline-dark">Add to Cart</button>
-                <button class="btn btn-primary">Edit</button>
-                <button class="btn btn-danger">Delete</button>
-            </div>-->
+                <div class="quantity_control">
+                    <button class="left" (click)="changeQuantity(false)">-</button>
+                    <span>{{quantity}}</span>
+                    <button class="right" (click)="changeQuantity(true)">+</button>
+                </div>
+                <button class="btn btn-outline-dark" (click)="isLoggedIn(product)" style="width:50%;margin: 20px auto;">Add to Cart</button>
+            </div>
         </div>
     </ng-container>
 </div>
+<mat-paginator [length]="filteredList.length" [pageSize]="12" (page)="onPageChange($event)" aria-label="Select page">
+</mat-paginator>

@@ -1,10 +1,10 @@
-import { Product } from "./product";
 
+//Model for Cart
 export interface Cart {
     id:number;
-    products:Product[];
+    products:any[];
     total:number;
-    discounterTotal:number;
+    discountedTotal:number;
     userId:number;
     totalProducts:number;
     totalQuantity:number

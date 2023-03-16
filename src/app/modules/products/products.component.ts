@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Cart } from 'src/app/interfaces/cart';
 import { Product } from 'src/app/interfaces/product';
+import { CartService } from '../cart/cart.service';
 
 @Component({
   selector: 'app-products',
@@ -14,8 +16,9 @@ export class ProductsComponent implements OnInit {
   noProducts:boolean = false;
   filteredList!:Product[];
   selectedView:string='grid';
+  userCart!:Cart;
 
-  constructor() { }
+  constructor(private cartService:CartService) { }
 
   ngOnInit(): void {
     const records = localStorage.getItem("productsList")
@@ -66,5 +69,9 @@ export class ProductsComponent implements OnInit {
 
   filterProductsByName(){
     this.filterProducts()
+  }
+
+  addProductToCart(product:Product){  
+    this.cartService.addProductToCart(product);
   }
 }

@@ -1,3 +1,5 @@
+
+//Model for product
 export interface Product {
     id:number;
     title:string;
@@ -10,4 +12,5 @@ export interface Product {
     category:string;
     thumbnail:string;
     images:string[];
+    quantity:number;
 }

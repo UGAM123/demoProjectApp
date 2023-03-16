@@ -40,7 +40,7 @@
     </nav>
     <div>
         <ng-container *ngIf="selectedView=='grid'">
-            <app-products-grid [filteredList]="filteredList" [noProducts]='noProducts'></app-products-grid>
+            <app-products-grid [filteredList]="filteredList" [noProducts]='noProducts' (addToCart)="addProductToCart($event)"></app-products-grid>
         </ng-container>
         <ng-container *ngIf="selectedView=='list'">
             <app-products-list [filteredList]="filteredList" [activeProduct]="activeProduct" [noProducts]='noProducts'></app-products-list>

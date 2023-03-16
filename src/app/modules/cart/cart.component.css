@@ -1,0 +1,28 @@
+.cart-container{
+    width: 80%;
+    margin: 25px auto;
+}
+
+.cart-navbar{
+    width: 95%;
+    margin: auto;
+    padding-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.cart-content{
+    width: 95%;
+    margin: auto;
+}
+
+.cart-content .cart-products{
+    display: flex;
+    justify-content:  space-between;
+}
+
+.cart-total{
+    display: flex;
+    justify-content: flex-end;
+}

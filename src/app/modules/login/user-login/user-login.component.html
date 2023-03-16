@@ -3,6 +3,8 @@
         <div>
             <span *ngIf="invalidDetails" class="invalid_details">Invalid username or password!
             </span>
+            <span *ngIf="loggedIn" class="invalid_details" style="color:blue">Logged In! Redirecting...
+            </span>
         </div>
         <div class="div-1">
             <input type="text" name="username" placeholder="User Name" formControlName="username">
@@ -17,7 +19,7 @@
             </span>
         </div>
         <div class="div-3">
-            <button id="login-button" class="btn btn-primary" [disabled]="loginForm.invalid" (click)="detailsValidation()">Login</button>
+            <button id="login-button" class="btn btn-primary" [disabled]="!loginForm.valid" (click)="detailsValidation()">Login</button>
         </div>
         <div class="div-4">
             Not Registered? <a routerLink="/register">Register</a>

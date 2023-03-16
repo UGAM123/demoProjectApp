@@ -1,0 +1,36 @@
+<div class="cart-container mat-elevation-z8">
+    <div class="cart-navbar">
+        <h5>Shopping Cart</h5>
+        <h6>Price</h6>
+    </div>
+    <hr>
+
+    <div class="cart-content">
+        <ng-container *ngIf="is_empty">
+            <h6>
+                Your cart is empty.
+            </h6>
+            <a [routerLink]="['/products']">Shop More.</a>
+        </ng-container>
+        <div *ngIf="!is_empty" >
+            <ng-container *ngFor="let product of userCart.products" >
+                <div class="cart-products">
+                    <div class="left_section">
+                        <p>{{product.title}}</p>
+                        <p>{{product.description}}</p>
+                        <p>Quantity : {{product.quantity}}</p>
+                    </div>
+                    <div class="right_section">
+                        <p>{{product.discountedPrice | currency}}</p>
+                        <button class="btn btn-danger" (click)="delete(product)">Delete</button>
+                    </div>
+                </div>
+                <hr>
+            </ng-container>
+            <div class="cart-total">
+                <p><strong>Total</strong> : {{userCart.discountedTotal}}</p>
+            </div>
+        </div>
+
+    </div>
+</div>

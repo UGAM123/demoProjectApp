@@ -9,7 +9,7 @@ import { SharedService } from 'src/app/shared/shared.service';
 })
 export class NavbarComponent implements OnInit {
   is_loggedIn!: boolean;
-  constructor(private service: SharedService, private router:Router) {
+  constructor(private service: SharedService, private router: Router) {
     this.is_loggedIn = this.service.getLogInState();
     this.router.events.subscribe(() => {
       this.is_loggedIn = this.service.getLogInState();
@@ -27,11 +27,13 @@ export class NavbarComponent implements OnInit {
     this.is_loggedIn = this.service.getLogInState();
   }
 
-  
 
-logout(){
-  this.service.changeLogInState();
-  this.is_loggedIn = this.service.getLogInState();
-}
+
+  logout() {
+    localStorage.removeItem('currentUser')
+    localStorage.removeItem('userCart')
+    this.service.changeLogInState();
+    this.is_loggedIn = this.service.getLogInState();
+  }
 
 }

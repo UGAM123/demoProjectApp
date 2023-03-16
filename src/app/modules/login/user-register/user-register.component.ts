@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { User } from 'src/app/interfaces/user';
 
 @Component({
@@ -12,7 +14,7 @@ export class UserRegisterComponent implements OnInit {
   user!: User;
   usersList!: User[];
   passMatch: boolean = false;
-  constructor() {
+  constructor(private _snackBar: MatSnackBar, private router: Router) {
 
   }
 
@@ -32,20 +34,20 @@ export class UserRegisterComponent implements OnInit {
     const userRecords = localStorage.getItem('usersList')
     if (userRecords !== null) {
       this.usersList = JSON.parse(userRecords);
-      console.log(this.usersList)
     }
   }
 
   registerUser() {
+    setTimeout('',1000);
     const age = 22;
-    var id =0;
+    var id = 0;
     const userRecords = localStorage.getItem('usersList')
     if (userRecords !== null) {
       this.usersList = JSON.parse(userRecords);
-      id = this.usersList[this.usersList.length-1].id
+      id = this.usersList[this.usersList.length - 1].id
     }
     this.user = {
-      'id': id+1,
+      'id': id + 1,
       'username': this.registerForm.controls['username'].value,
       'password': this.registerForm.controls['password'].value,
       'firstName': this.registerForm.controls['firstName'].value,
@@ -59,20 +61,35 @@ export class UserRegisterComponent implements OnInit {
     }
     this.usersList.push(this.user)
     localStorage.setItem('usersList', JSON.stringify(this.usersList))
+    this.router.navigate(['/login'])
+    this._snackBar.open("Registration Done.", '', {
+      duration: 3000
+    });
   }
 
-  /*confirmPassword(control:FormControl):{[s:string]:boolean}{
-    if(this.registerForm){
-      if(this.registerForm.controls['password'].value== control.value){
-        return {'passwordMatched':true}
+  /*
+    confirmPassword(control: AbstractControl): ValidationErrors | null {
+      if(control && control.get('password') && control.get('confirm-password')){
+        debugger
+        const password = control.get('password');
+        const confirm_password = control.get('confirm-password')
+        return (password == confirm_password) ? { passwordMatch: true } : null
       }
+      return null;
     }
-    return {'passwordMatched':false} 
-  }
-*/
-  confirmPassword() {
-    if (this.registerForm.controls['password'].value === this.registerForm.controls['confirm-password'].value) {
-      this.passMatch = true;
+  
+    confirmPassword(control:FormControl):{[s:string]:boolean}{
+      if(this.registerForm){
+        if(this.registerForm.controls['password'].value== control.value){
+          return {'passwordMatched':true}
+        }
+      }
+      return null;
     }
-  }
+  
+    confirmPassword() {
+      if (this.registerForm.controls['password'].value === this.registerForm.controls['confirm-password'].value) {
+        this.passMatch = true;
+      }
+    }*/
 }

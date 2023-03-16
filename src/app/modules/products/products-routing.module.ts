@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppResolver } from 'src/app/app.resolver';
+import { ProductsDetailsComponent } from './products-details/products-details.component';
 import { ProductsEditComponent } from './products-edit/products-edit.component';
 import { ProductsComponent } from './products.component';
 
@@ -10,6 +11,7 @@ const routes: Routes = [
     component:ProductsComponent,
     resolve:{product:AppResolver}
   },
+  {path:"products/details/:id",component:ProductsDetailsComponent },
   {path:"products/:id/edit",component:ProductsEditComponent},
 ];
 
