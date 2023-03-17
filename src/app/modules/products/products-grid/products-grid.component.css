@@ -61,3 +61,10 @@
     background: none;
     border-radius: 50%;
 }
+
+.product-incart{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: auto;
+}

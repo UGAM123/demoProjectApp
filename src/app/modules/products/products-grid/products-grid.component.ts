@@ -1,9 +1,10 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { Router } from '@angular/router';
-import { start } from 'repl';
+import { Cart } from 'src/app/interfaces/cart';
 import { Product } from 'src/app/interfaces/product';
 import { SharedService } from 'src/app/shared/shared.service';
+import { CartService } from '../../cart/cart.service';
 
 @Component({
   selector: 'app-products-grid',
@@ -14,10 +15,10 @@ export class ProductsGridComponent implements OnInit {
   @Input() filteredList!:Product[];
   @Input() noProducts!:boolean;
   @Output() addToCart = new EventEmitter();
-  quantity:number = 1
 
   listSlice!:Product[];
-  constructor(private service:SharedService, private router:Router) { }
+  userCart!:Cart;
+  constructor(private service:SharedService,private cartService:CartService, private router:Router) { }
 
   ngOnInit(): void {
   }
@@ -26,12 +27,22 @@ export class ProductsGridComponent implements OnInit {
     this.listSlice = this.filteredList.slice(0, 12);
   }
 
-  changeQuantity(value:boolean){
-    if(!value && this.quantity>0){
-      this.quantity--
+  changeQuantity(product:Product ,value:boolean){
+    if(!value && product.quantity>1){
+      this.filteredList.forEach((prod,i=0) =>{
+        if(prod.id == product.id){
+          this.filteredList[i].quantity--
+        }
+        i++
+      })
     }
-    else{
-      this.quantity++
+    else if(value){
+      this.filteredList.forEach((prod,i=0) =>{
+        if(prod.id == product.id){
+          this.filteredList[i].quantity++
+        }
+        i++
+      })
     }
   }
 
@@ -50,7 +61,7 @@ export class ProductsGridComponent implements OnInit {
 
   isLoggedIn(product:Product){
     if(this.service.getLogInState()){
-      this.productInCart(product)  
+      this.callParentAddToCart(product)
     }
     else{
       this.router.navigate(['/login'])
@@ -58,6 +69,12 @@ export class ProductsGridComponent implements OnInit {
   }
 
   productInCart(product:Product){
-
+    if(this.service.getLogInState()){
+      var is_present = this.cartService.productInCart(product);
+      return is_present
+    }
+    else{
+      return false
+    }
   }
 }

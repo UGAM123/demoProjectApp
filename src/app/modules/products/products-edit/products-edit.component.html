@@ -1,1 +1,24 @@
-<p>products-edit works!</p>
+<div class="product_edit-container">
+    <form class="mat-elevation-z8" [formGroup]="productForm">
+        <h4>Edit Product</h4>
+        <div class="div-1">
+            <input type="text" formControlName="title">
+            <input type="text" formControlName="brand">
+            <input type="text" formControlName="category">
+        </div>
+        <div class="div-2">
+            <input type="textarea" formControlName="description">
+        </div>
+        <div class="div-4">
+            <input type="number" formControlName="price">
+            <input type="text" formControlName="discountPercentage">
+        </div>
+        <div class="div-5">
+            <input type="number" formControlName="stock">
+            <input type="text" formControlName="rating">
+        </div>
+        <div class="div-6">
+            <button class="btn btn-primary" (click)="onSubmit()">Edit</button>
+        </div>
+    </form>
+</div>

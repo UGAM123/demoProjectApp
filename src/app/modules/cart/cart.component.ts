@@ -23,6 +23,7 @@ export class CartComponent implements OnInit {
     this.refreshData()
   }
 
+  //Refreshing to get latest data after making CRUD operations
   refreshData(){
     const cartRecords = localStorage.getItem('userCart')
     const userRecord = localStorage.getItem('currentUser')
@@ -35,6 +36,7 @@ export class CartComponent implements OnInit {
     }
   }
 
+  //Delete Product from cart
   delete(product:Product){
     this.cartService.deleteProductFromCart(product)
     this.refreshData( )

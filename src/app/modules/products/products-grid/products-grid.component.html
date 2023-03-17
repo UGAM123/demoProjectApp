@@ -12,11 +12,14 @@
                 <p>{{product.description}}</p>
                 <p>Price : {{product.price | currency}}</p>
             </div>
-            <div class="button-container">
+            <div class="product-incart" *ngIf="productInCart(product)">
+                <button class="btn btn-outline-dark" style="width:50%;margin: 20px auto;" disabled>In Cart</button>
+            </div>
+            <div class="button-container" *ngIf="!productInCart(product)">
                 <div class="quantity_control">
-                    <button class="left" (click)="changeQuantity(false)">-</button>
-                    <span>{{quantity}}</span>
-                    <button class="right" (click)="changeQuantity(true)">+</button>
+                    <button class="left" (click)="changeQuantity(product,false)">-</button>
+                    <span>{{product.quantity}}</span>
+                    <button class="right" (click)="changeQuantity(product,true)">+</button>
                 </div>
                 <button class="btn btn-outline-dark" (click)="isLoggedIn(product)" style="width:50%;margin: 20px auto;">Add to Cart</button>
             </div>

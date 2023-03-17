@@ -30,6 +30,9 @@ export class AppResolver implements Resolve<any> {
     this.service.getAllProducts().subscribe(res => {
       this.temp = res;
       this.productsList = this.temp.products;
+      this.productsList.forEach(product => {
+        product.quantity = 1;
+      })
       if(productsRecords==null || productsRecords=="[]"){
         localStorage.setItem("productsList",JSON.stringify(this.productsList))
       }

@@ -10,7 +10,7 @@
             <h6>
                 Your cart is empty.
             </h6>
-            <a [routerLink]="['/products']">Shop More.</a>
+            <a [routerLink]="['/products']"><i>Shop More.</i></a>
         </ng-container>
         <div *ngIf="!is_empty" >
             <ng-container *ngFor="let product of userCart.products" >

@@ -29,6 +29,7 @@ export class UserLoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  //Validating if the user exist
   detailsValidation() {
     const userRecords = localStorage.getItem("usersList");
     this.invalidDetails = false;

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Cart } from 'src/app/interfaces/cart';
 import { Product } from 'src/app/interfaces/product';
 import { CartService } from '../cart/cart.service';
+import { ProductsService } from './products.service';
 
 @Component({
   selector: 'app-products',
@@ -18,7 +19,7 @@ export class ProductsComponent implements OnInit {
   selectedView:string='grid';
   userCart!:Cart;
 
-  constructor(private cartService:CartService) { }
+  constructor(private cartService:CartService, private productService:ProductsService) { }
 
   ngOnInit(): void {
     const records = localStorage.getItem("productsList")
@@ -29,11 +30,29 @@ export class ProductsComponent implements OnInit {
     this.activeProduct = this.productsList[0];
   }
 
+  
+
   changeView(event:any){
     this.selectedView = event.target.value;
   }
 
+  deleteProduct(id:number){
+    this.productService.deleteProduct(id)
+    var index = this.filteredList.findIndex(prod => prod.id == this.activeProduct.id)
+    if(index > this.filteredList.length){
+      this.activeProduct = this.filteredList[0]
+    }
+    else{
+      this.activeProduct = this.filteredList[index+1]
+      this.filterProducts()
+    }
+  }
+
   filterProducts(){
+    const products = localStorage.getItem("productsList")
+    if(products!==null){
+      this.productsList = JSON.parse(products)
+    }
     if(this.filterCategory=="all"){
       this.filteredList = this.productsList.filter((product:Product) => {
         if(product.title.toLowerCase().includes(this.filterString.toLowerCase())){

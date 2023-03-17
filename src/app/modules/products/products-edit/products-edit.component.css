@@ -1,0 +1,82 @@
+.product_edit-container {
+    width: 50%;
+    margin: 25px auto;
+}
+.product_edit-container h4{
+    width: 80%;
+    margin: auto;
+    padding: 20px 0;
+    align-items: center;
+    text-align: center;
+}
+.product_edit-container div, .register-container p{
+    width: 80%;
+    margin: auto;
+    padding: 10px 0px;
+}
+
+.product_edit-container .div-1,
+.product_edit-container .div-4,
+.product_edit-container .div-5 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.product_edit-container .div-1 input {
+    width: 32%;
+    height: 3rem;
+    border-radius: 5px;
+}
+
+.product_edit-container .div-6 {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    padding-bottom: 20px;
+}
+
+.product_edit-container .div-6 button{
+    width: 50%;
+    height: 3rem;
+    border-radius: 5px;
+}
+
+.product_edit-container .div-2 {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.product_edit-container .div-4 input,
+.product_edit-container .div-5 input {
+    width: 48%;
+    height: 3rem;
+    border-radius: 5px;
+}
+
+.product_edit-container .div-2 input {
+    width: 100%;
+    height: 3rem;
+    border-radius: 5px;
+}
+
+.product_edit-container p{
+    display: flex;
+    justify-content: center;
+    align-items: center;  
+    padding-bottom: 20px;  
+}
+.product_edit-container p a{
+    margin-left: 10px;
+    font-style: italic;
+}
+
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+input.ng-invalid.ng-touched{
+    border-color: rgba(255,0,0,0.5);
+}

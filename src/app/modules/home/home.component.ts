@@ -13,12 +13,13 @@ export class HomeComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    //Getting products from localStorage
     const records = localStorage.getItem('productsList');
     if (records !== null) {
       this.productList = JSON.parse(records)
     }
     this.filteredList = this.productList.filter((product:Product) => {
-      if(product.discountPercentage>16){
+      if(product.discountPercentage>17){
         return product
       }
       return

@@ -1,4 +1,4 @@
-<div class="product_details-container">
+<div class="product_details-container" *ngIf="product_id == undefined">
     <h4 class="product_details-title">{{product.title}}</h4>
     <div class="product_details-content">
         <img [src]="product.thumbnail">
@@ -7,9 +7,38 @@
             <p>Price : {{product.price | currency}}</p>
         </div>
     </div>
-    <div>
-        <button class="btn btn-white">Add to Cart</button>
-        <button class="btn btn-primary">Edit</button>
-        <button class="btn btn-danger" (click)="callParentDeleteItem()">Delete</button>
+    <section class="quantity_control" *ngIf="!productInCart(product)">
+        <button class="left" (click)="changeQuantity(product,false)">-</button>
+        <span>{{product.quantity}}</span>
+        <button class="right" (click)="changeQuantity(product,true)">+</button>
+    </section>
+    <div class="product_details-button">
+        <button class="btn btn-outline-dark" *ngIf="!productInCart(product)" (click)="isLoggedIn(product)">Add to Cart</button>
+        <button class="btn btn-outline-dark" *ngIf="productInCart(product)" disabled>In Cart</button>
+        <button class="btn btn-primary" [routerLink]="['edit/'+product.id]">Edit</button>
+        <button class="btn btn-danger" (click)="callParentDeleteItem(product)">Delete</button>
+    </div>
+</div>
+<div class="product_details-container" *ngIf="product_id !== undefined">
+    <h4 class="product_details-title">{{routeProduct.title | uppercase}}</h4>
+    <div class="product_details-content">
+        <img [src]="routeProduct.thumbnail">
+        <div class="short_details">
+            <p>{{routeProduct.description}}</p>
+            <p>Brand : {{routeProduct.brand}}</p>
+            <p>Price : {{routeProduct.price | currency}}</p>
+            <p>Rating : {{routeProduct.rating}}</p>
+        </div>
+    </div>
+    <section class="quantity_control" *ngIf="!productInCart(routeProduct)">
+        <button class="left" (click)="changeQuantity(routeProduct,false)">-</button>
+        <span>{{routeProduct.quantity}}</span>
+        <button class="right" (click)="changeQuantity(routeProduct,true)">+</button>
+    </section>
+    <div class="product_details-button">
+        <button class="btn btn-outline-dark" *ngIf="!productInCart(routeProduct)" (click)="isLoggedIn(routeProduct)">Add to Cart</button>
+        <button class="btn btn-outline-dark" *ngIf="productInCart(routeProduct)" disabled>In Cart</button>
+        <button class="btn btn-primary" [routerLink]="['/products/edit/'+routeProduct.id]">Edit</button>
+        <button class="btn btn-danger" (click)="deleteProduct(routeProduct)">Delete</button>
     </div>
 </div>

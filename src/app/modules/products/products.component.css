@@ -3,8 +3,29 @@
     margin: 2rem auto;
 }
 .products-navbar{
-    width: 90%;
+    width: 95%;
     margin: auto;
     display: flex;
     justify-content: space-between;
+}
+
+.products-navbar select{
+    width: 20%;
+}
+
+.products_filter{
+    width: 95%;
+    margin: 10px auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.products_filter section{
+    display: flex;
+    align-items: center;
+}
+
+.products_filter section label{
+    margin-right: 10px;
 }

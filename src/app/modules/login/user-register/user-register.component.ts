@@ -37,6 +37,7 @@ export class UserRegisterComponent implements OnInit {
     }
   }
 
+  //Registering User
   registerUser() {
     setTimeout('',1000);
     const age = 22;

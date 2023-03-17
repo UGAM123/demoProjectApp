@@ -10,12 +10,14 @@ import { NavbarComponent } from './modules/navbar/navbar.component';
 import { ProductsModule } from './modules/products/products.module';
 import { CartModule } from './modules/cart/cart.module';
 import { LoginModule } from './modules/login/login.module';
+import { ErrorComponent } from './modules/error/error.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     NavbarComponent,
+    ErrorComponent,
   ],
   imports: [
     BrowserModule,
