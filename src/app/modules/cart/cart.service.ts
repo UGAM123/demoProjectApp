@@ -1,5 +1,6 @@
 import { convertUpdateArguments } from '@angular/compiler/src/compiler_util/expression_converter';
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 import { Cart } from 'src/app/interfaces/cart';
 import { Product } from 'src/app/interfaces/product';
 import { User } from 'src/app/interfaces/user';
@@ -12,8 +13,15 @@ export class CartService {
   userCart!: Cart;
   user!: User
   product: any;
+  cartSubject = new Subject<any>()
 
-  constructor() { }
+  constructor() { 
+    
+  }
+
+  ngOnInit(){
+    
+  }
 
   //Refreshing to get latest data after CRUD operations
   refreshUserCart() {
@@ -24,14 +32,14 @@ export class CartService {
   }
 
   //Checking if the received product is in the cart
-  productInCart(product:Product){
-    var is_present =false;
+  productInCart(product: Product) {
+    var is_present = false;
     this.refreshUserCart()
-    if(this.userCart!==undefined){
+    if (this.userCart !== undefined) {
       this.userCart.products.forEach(prod => {
-        if(prod.id == product.id){
-          is_present=true;
-        }     
+        if (prod.id == product.id) {
+          is_present = true;
+        }
       })
     }
     return is_present
@@ -40,16 +48,16 @@ export class CartService {
   //Adding product to cart
   addProductToCart(product: Product) {
     const userCart = localStorage.getItem('userCart')
-    var productDiscountedPrice = product.price*product.quantity
-    productDiscountedPrice -= product.price* product.quantity * product.discountPercentage / 100;
-    
+    var productDiscountedPrice = product.price * product.quantity
+    productDiscountedPrice -= product.price * product.quantity * product.discountPercentage / 100;
+
     //Making an object to represent the product
     this.product = {
       'id': product.id,
       'title': product.title,
       'price': product.price,
       'quantity': product.quantity,
-      'total': product.price,
+      'total': product.price*product.quantity,
       'discountPercentage': product.discountPercentage,
       'discountedPrice': Math.round(productDiscountedPrice),
     }
@@ -59,12 +67,12 @@ export class CartService {
       this.userCart = JSON.parse(userCart)
       this.userCart.products.push(this.product)
       this.userCart.discountedTotal += Math.round(productDiscountedPrice)
-      this.userCart.total += product.price*product.quantity
+      this.userCart.total += product.price * product.quantity
       this.userCart.totalQuantity += product.quantity
       this.userCart.totalProducts++
 
       localStorage.setItem('userCart', JSON.stringify(this.userCart))
-      console.log(this.userCart)
+      this.cartSubject.next(this.userCart.products.length)
     }
     //Making a new cart if it doesn't exist
     else {
@@ -78,13 +86,14 @@ export class CartService {
       this.userCart = {
         'id': id,
         'products': [this.product],
-        'total': product.price,
+        'total': product.price*product.quantity,
         'totalProducts': 1,
         'totalQuantity': product.quantity,
         'userId': this.user.id,
         'discountedTotal': Math.round(productDiscountedPrice)
       }
       localStorage.setItem('userCart', JSON.stringify(this.userCart))
+      this.cartSubject.next(this.userCart.products.length)
     }
     this.refreshUserCart()
   }
@@ -97,13 +106,14 @@ export class CartService {
     //If there are no products in cart deleting the cart
     if (this.userCart.products.length == 0) {
       localStorage.removeItem('userCart')
+      this.cartSubject.next(0)
     }
     //Changing the cart by removing the product
     else {
-      var productDiscountedPrice = product.price*product.quantity
-      productDiscountedPrice -= product.price*product.quantity * product.discountPercentage / 100;
+      var productDiscountedPrice = product.price * product.quantity
+      productDiscountedPrice -= product.price * product.quantity * product.discountPercentage / 100;
       this.userCart.discountedTotal -= Math.round(productDiscountedPrice)
-      this.userCart.total -= product.price*product.quantity
+      this.userCart.total -= product.price * product.quantity
       this.userCart.totalQuantity -= product.quantity
       this.userCart.totalProducts -= 1
       localStorage.setItem('userCart', JSON.stringify(this.userCart))
@@ -112,12 +122,8 @@ export class CartService {
     if (userCart !== null) {
       this.userCart = JSON.parse(userCart)
     }
-
+    this.cartSubject.next(this.userCart.products.length)
   }
 
-
-
-
-
-
+  
 }

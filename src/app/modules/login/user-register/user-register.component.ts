@@ -14,8 +14,13 @@ export class UserRegisterComponent implements OnInit {
   user!: User;
   usersList!: User[];
   passMatch: boolean = false;
-  constructor(private _snackBar: MatSnackBar, private router: Router) {
+  minDate: Date;
+  maxDate: Date;
 
+  constructor(private _snackBar: MatSnackBar, private router: Router) {
+    const currentYear = new Date().getFullYear();
+    this.minDate = new Date(currentYear - 80, 0, 1);
+    this.maxDate = new Date(currentYear - 10, 0, 0);
   }
 
   ngOnInit(): void {
@@ -29,7 +34,7 @@ export class UserRegisterComponent implements OnInit {
       'email': new FormControl('', [Validators.required, Validators.email]),
       'username': new FormControl('', [Validators.required]),
       'password': new FormControl('', Validators.required),
-      'confirm-password': new FormControl('', [Validators.required]),
+      'confirm-password': new FormControl('', [Validators.required, this.confirmPassword]),
     })
     const userRecords = localStorage.getItem('usersList')
     if (userRecords !== null) {
@@ -66,6 +71,17 @@ export class UserRegisterComponent implements OnInit {
     this._snackBar.open("Registration Done.", '', {
       duration: 3000
     });
+  }
+
+  confirmPassword(control:FormControl){
+    debugger
+    let confirmPassword = control.value
+    const password = this.registerForm.get('password')?.value;
+
+    if(confirmPassword && password && password == confirmPassword){
+      return { passwordMatch: true }
+    }
+    return null;
   }
 
   /*

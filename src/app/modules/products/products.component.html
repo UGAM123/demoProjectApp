@@ -33,48 +33,11 @@
                 <option value="lighting">Lighting</option>
             </select>
         </section>
-        
-        
         <section>
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
                 [(ngModel)]="filterString" (input)="filterProductsByName()">
         </section>
-
-
     </nav>
-    <!-- <nav class="navbar bg-body-tertiary">
-        <div class="container-fluid">
-
-            <div class="d-flex" role="search">
-                <p>Category : </p>
-                <select (change)="filterProductsByCategory($event)" class="form-select"
-                    aria-label="Default select example">
-                    <option value="all">All</option>
-                    <option value="smartphones">Smart Phones</option>
-                    <option value="laptops">Laptops</option>
-                    <option value="fragrances">Fragrances</option>
-                    <option value="skincare">Skin Care</option>
-                    <option value="groceries">Groceries</option>
-                    <option value="homedecoration">Home Decoration</option>
-                    <option value="furniture">Furniture</option>
-                    <option value="tops">Tops</option>
-                    <option value="womens-dresses">Womens Dresses</option>
-                    <option value="womens-shoes">Womens Shoes</option>
-                    <option value="mens-shirts">Mens Shirts</option>
-                    <option value="mens-shoes">Mens Shoes</option>
-                    <option value="mens-watches">Mens Watches</option>
-                    <option value="womens-watches">Women Watches</option>
-                    <option value="womens-bags">Womens Bags</option>
-                    <option value="womens-jewellery">Womens Jewellery</option>
-                    <option value="sunglasses">Sunglasses</option>
-                    <option value="automotive">Automotive</option>
-                    <option value="motorcycle">Motorcycle</option>
-                    <option value="lighting">Lighting</option>
-                </select>
-                <p>Search : <input type="text" [(ngModel)]="filterString" (input)="filterProductsByName()"></p>
-            </div>
-        </div>
-    </nav> -->
     <div>
         <ng-container *ngIf="selectedView=='grid'">
             <app-products-grid [filteredList]="filteredList" [noProducts]='noProducts'

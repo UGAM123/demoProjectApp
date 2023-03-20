@@ -8,11 +8,12 @@
         </div>
         <div class="div-2">
             <input type="text" placeholder="Phone Number" formControlName="phone">
-            <span class="example-spacer"></span>
-            <div>
-                <label>DOB :</label>
-                <input type="date" placeholder="Birth Date" formControlName="birthDate">
-            </div>
+            <section>
+                <mat-label>DOB : </mat-label>
+                <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" formControlName="birthDate" style="width:65%">
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </section>
         </div>
         <div class="div-3">
             <label>Gender :</label>
@@ -27,9 +28,10 @@
         <div class="div-5">
             <input type="password" placeholder="Password" formControlName="password">
             <input type="password" placeholder="Confirm Password" formControlName="confirm-password">
-                
+
         </div>
-        <span class="passInvalid" *ngIf="registerForm.controls['confirm-password'].invalid && registerForm.controls['confirm-password'].touched">
+        <span class="passInvalid"
+            *ngIf="registerForm.controls['confirm-password'].invalid && registerForm.controls['confirm-password'].touched">
             Passwords do not match.
         </span>
         <div class="div-6">

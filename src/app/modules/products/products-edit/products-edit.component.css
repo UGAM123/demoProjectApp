@@ -2,14 +2,17 @@
     width: 50%;
     margin: 25px auto;
 }
-.product_edit-container h4{
+
+.product_edit-container h4 {
     width: 80%;
     margin: auto;
     padding: 20px 0;
     align-items: center;
     text-align: center;
 }
-.product_edit-container div, .register-container p{
+
+.product_edit-container div,
+.register-container p {
     width: 80%;
     margin: auto;
     padding: 10px 0px;
@@ -23,9 +26,11 @@
     align-items: center;
 }
 
-.product_edit-container .div-1 input {
+.product_edit-container .div-1 input,
+.product_edit-container .div-1 select {
     width: 32%;
     height: 3rem;
+    border: 2px solid black;
     border-radius: 5px;
 }
 
@@ -37,7 +42,7 @@
     padding-bottom: 20px;
 }
 
-.product_edit-container .div-6 button{
+.product_edit-container .div-6 button {
     width: 50%;
     height: 3rem;
     border-radius: 5px;
@@ -62,13 +67,14 @@
     border-radius: 5px;
 }
 
-.product_edit-container p{
+.product_edit-container p {
     display: flex;
     justify-content: center;
-    align-items: center;  
-    padding-bottom: 20px;  
+    align-items: center;
+    padding-bottom: 20px;
 }
-.product_edit-container p a{
+
+.product_edit-container p a {
     margin-left: 10px;
     font-style: italic;
 }
@@ -77,6 +83,6 @@
     flex: 1 1 auto;
 }
 
-input.ng-invalid.ng-touched{
-    border-color: rgba(255,0,0,0.5);
+input.ng-invalid.ng-touched {
+    border-color: rgba(255, 0, 0, 0.5);
 }

@@ -45,8 +45,13 @@
 
 .register-container .div-2 {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
+}
+
+.register-container .div-2 div {
+    position: relative;
+    
 }
 
 .register-container .div-2 input,

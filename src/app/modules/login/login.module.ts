@@ -5,6 +5,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { LoginRoutingModule } from './login-routing.module';
 import { UserLoginComponent } from './user-login/user-login.component';
 import { UserRegisterComponent } from './user-register/user-register.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core'
 
 
 @NgModule({
@@ -15,7 +17,13 @@ import { UserRegisterComponent } from './user-register/user-register.component';
   imports: [
     CommonModule,
     LoginRoutingModule,
-    SharedModule
-  ]
+    SharedModule,
+    MatNativeDateModule,
+    MatDatepickerModule
+  ],
+  providers: [  
+    MatDatepickerModule,
+    MatNativeDateModule  
+  ],
 })
 export class LoginModule { }

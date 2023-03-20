@@ -21,6 +21,7 @@
                         <p>Quantity : {{product.quantity}}</p>
                     </div>
                     <div class="right_section">
+                        <p><s>{{product.total | currency}}</s></p>
                         <p>{{product.discountedPrice | currency}}</p>
                         <button class="btn btn-danger" (click)="delete(product)">Delete</button>
                     </div>
@@ -28,7 +29,8 @@
                 <hr>
             </ng-container>
             <div class="cart-total">
-                <p><strong>Total</strong> : {{userCart.discountedTotal}}</p>
+                <p><s>{{userCart.total | currency}}</s></p>
+                <p><strong>Total</strong> : {{userCart.discountedTotal | currency}}</p>
             </div>
         </div>
 
