@@ -41,4 +41,9 @@ export class CartComponent implements OnInit {
     this.cartService.deleteProductFromCart(product)
     this.refreshData( )
   }
+
+  confirmProceed(){
+      
+  }
+
 }

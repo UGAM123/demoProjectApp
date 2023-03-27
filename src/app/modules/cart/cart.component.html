@@ -31,6 +31,7 @@
             <div class="cart-total">
                 <p><s>{{userCart.total | currency}}</s></p>
                 <p><strong>Total</strong> : {{userCart.discountedTotal | currency}}</p>
+                <button class="btn btn-primary" (click)="confirmProceed()">Proceed</button>
             </div>
         </div>
 

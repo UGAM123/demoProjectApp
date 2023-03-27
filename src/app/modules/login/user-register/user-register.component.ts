@@ -34,7 +34,7 @@ export class UserRegisterComponent implements OnInit {
       'email': new FormControl('', [Validators.required, Validators.email]),
       'username': new FormControl('', [Validators.required]),
       'password': new FormControl('', Validators.required),
-      'confirm-password': new FormControl('', [Validators.required, this.confirmPassword]),
+      'confirm-password': new FormControl('', [Validators.required]),
     })
     const userRecords = localStorage.getItem('usersList')
     if (userRecords !== null) {
